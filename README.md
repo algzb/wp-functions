@@ -986,7 +986,7 @@ add_action( 'pre_get_posts', function( $query ) { // anonymous callback
     }
 });
 ```
-### Allow PHP in Widgets
+## Allow PHP in Widgets
 
 ```
 function php_execute($html){
