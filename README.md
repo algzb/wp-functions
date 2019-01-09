@@ -46,6 +46,7 @@ This is a list of useful WordPress functions that I often reference to enhance o
 - [Remove Admin Menu Items Depending on Email Address (Domain)](#remove-admin-menu-items-depending-on-email-address-domain)
 - [Reorder Admin Menu Items](#reorder-admin-menu-items)
 - [Exclude a Category From WordPress Loops](#exclude-a-category-from-wordpress-loops)
+- [Allow PHP in Widgets](#allow-php-in-widgets)
 
 ## Hide WordPress Update Nag to All But Admins
 
@@ -985,3 +986,16 @@ add_action( 'pre_get_posts', function( $query ) { // anonymous callback
     }
 });
 ```
+### Allow PHP in Widgets
+
+```
+function php_execute($html){
+if(strpos($html,"<"."?php")!==false){ ob_start(); eval("?".">".$html);
+$html=ob_get_contents();
+ob_end_clean();
+}
+return $html;
+}
+add_filter('widget_text','php_execute',100);
+```
+
