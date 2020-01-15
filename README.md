@@ -47,6 +47,8 @@ This is a list of useful WordPress functions that I often reference to enhance o
 - [Reorder Admin Menu Items](#reorder-admin-menu-items)
 - [Exclude a Category From WordPress Loops](#exclude-a-category-from-wordpress-loops)
 - [Allow PHP in Widgets](#allow-php-in-widgets)
+- [Display custom excerpt only if exist] (#display-custom-excerpt-only-if-exist)
+
 
 ## Hide WordPress Update Nag to All But Admins
 
@@ -997,5 +999,12 @@ ob_end_clean();
 return $html;
 }
 add_filter('widget_text','php_execute',100);
+```
+## Display custom excerpt only if exist
+
+```
+<?php if ( has_excerpt() ) : // Only show custom excerpts not autoexcerpts ?>
+<span class="entry-subtitle"><?php echo get_the_excerpt(); ?></span>
+<?php endif; ?>
 ```
 
